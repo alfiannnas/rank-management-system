@@ -27,7 +27,7 @@
     }
 </style>
 <body>
-    <h1>Rank Management System (Kemenkumham Pranata Komputer Kantor Wilayah)</h1>
+    <h1>Rank Management System</h1>
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
