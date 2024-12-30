@@ -18,7 +18,7 @@ class RankManagementController extends Controller
             $query->where('location', $request->location);
         }
     
-        $rank = $query->orderBy('rank')->get();
+        $rank = $query->orderBy('rank')->paginate(25);
     
         $locations = [
             'Aceh', 'Sumatera Utara', 'Sumatera Barat', 'Riau', 'Jambi',

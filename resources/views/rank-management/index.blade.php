@@ -76,6 +76,10 @@ body {
                         </tr>
                         @endforeach
                     </table>
+
+                    <nav style="margin: 20px 0px">
+                        {!! $rank->appends($_GET)->links() !!}
+                    </nav>
                 </div>
             </div>
         </div>
