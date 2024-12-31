@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('rank-management.index')" :active="request()->routeIs('rank-management.*')">
                         {{ __('Rank Management') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('participant-management.index')" :active="request()->routeIs('participant-management.*')">
+                        {{ __('Participant Management') }}
+                    </x-nav-link>
                 </div>
             </div>
 
