@@ -37,6 +37,11 @@ class UserManagementController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        
+        if ($request->has('role')) {
+            $user->assignRole($request->role);
+        }
+        
         return redirect()->route('user-management.index');
     }
 
@@ -45,7 +50,6 @@ class UserManagementController extends Controller
      */
     public function show(User $user)
     {
-        dd($user);
         return redirect()->route('user-management.index')->with('success', 'User deleted successfully.');
     }
 
@@ -79,16 +83,6 @@ class UserManagementController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('user-management.index');
-    }
-
-    /**
-     * Add Permission to User
-     */
-    public function addPermission(Request $request, $id)
-    {
-        $user = User::find($id);
-        $user->assignRole($request->role);
         return redirect()->route('user-management.index');
     }
 }

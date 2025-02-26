@@ -36,54 +36,56 @@ body {
         </h2>
     </x-slot>
 
-    <body>
-        <div style="padding: 20px;">
-            <div class="d-flex justify-content-center">
-                <div class="w-50">
-                <div class="d-flex justify-content-end mb-3">
-                <form action="{{ route('user-management.create') }}" method="get">
-                        <button class="btn btn-primary">Add User</button>
-                    </form>
+    <div class="py-6">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white p-6 shadow-sm rounded-lg">
+                <div class="d-flex justify-between mb-4">
+                    <h1 class="text-lg">Create User</h1>
+                    <a href="{{ route('user-management.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded">
+                        Add User
+                    </a>
                 </div>
-                    <?php
-                        $count = 1;
-                    ?>
-                    <table>
+                
+                <table class="min-w-full">
+                    <thead class="bg-gray-100">
                         <tr>
-                            <th>No</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Created At</th>
-                            <th>Action</th>
+                            <th class="p-3">No</th>
+                            <th class="p-3">Name</th>
+                            <th class="p-3">Email</th>
+                            <th class="p-3">Created</th>
+                            <th class="p-3">Action</th>
                         </tr>
+                    </thead>
+                    <tbody>
                         @foreach($user as $users)
-                        <tr>
-                            <td>{{ $count++}}</td>
-                            <td>{{ $users->name }}</td>
-                            <td>{{ $users->email }}</td>
-                            <td>{{ $users->created_at->format('d-m-Y') }}</td>
-                            <td class="d-flex gap-x-2">
-                                <form action="{{ route('user-management.edit', ['user_management' => $users->id]) }}" method="GET">
-                                    <button type="submit" class="btn btn-warning">Edit</button>
-                                </form>
-                                <form action="{{ route('user-management.destroy', ['user_management' => $users->id]) }}" method="POST">
+                        <tr class="border-b">
+                            <td class="p-3">{{ $loop->iteration }}</td>
+                            <td class="p-3">{{ $users->name }}</td>
+                            <td class="p-3">{{ $users->email }}</td>
+                            <td class="p-3">{{ $users->created_at->format('d-m-Y') }}</td>
+                            <td class="p-3 space-x-2">
+                                <a href="{{ route('user-management.edit', $users->id) }}" 
+                                   class="bg-yellow-500 hover:bg-yellow-700 text-white px-3 py-1 rounded inline-block w-20 text-center">
+                                   Edit</a>
+                                <form action="{{ route('user-management.destroy', $users->id) }}" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded w-20">
+                                        Hapus
+                                    </button>
                                 </form>
                             </td>
                         </tr>
                         @endforeach
-                    </table>
+                    </tbody>
+                </table>
 
-                    <nav style="margin: 20px 0px">
-                        {!! $user->appends($_GET)->links() !!}
-                    </nav>
+                <div class="mt-4">
+                    {{ $user->links() }}
                 </div>
             </div>
         </div>
-
-    </body>
+    </div>
 </x-app-layout>
 
 </html>
