@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('participant-management.index')" :active="request()->routeIs('participant-management.*')">
                         {{ __('Participant Management') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('user-management.index')" :active="request()->routeIs('user-management.*')">
+                        {{ __('User Management') }}
+                    </x-nav-link>
                 </div>
             </div>
 

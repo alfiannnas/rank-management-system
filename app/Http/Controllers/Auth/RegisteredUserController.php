@@ -41,6 +41,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        $user->givePermissionTo('Rank Management - Can Create Data');
+
         event(new Registered($user));
 
         Auth::login($user);

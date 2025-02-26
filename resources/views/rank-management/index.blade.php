@@ -41,9 +41,12 @@ body {
             <div class="d-flex justify-content-center">
                 <div class="w-50">
                     <form action="{{ route('rank-management.create') }}">
+                    @if(auth()->user()->hasRole('admin'))
                         <div class="d-flex justify-content-end">
-                            <button type="submit" class="ml-2 btn btn-primary">Add Data</button>
+                                <button type="submit" class="ml-2 btn btn-primary">Add Data</button>
                         </div>
+                    @endif
+       
                     </form>
                     <form method="GET" action="{{ route('rank-management.index') }}" class="mb-4">
                         <label for="location" class="form-label">Choose Province</label>
