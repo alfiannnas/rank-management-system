@@ -1,6 +1,10 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
+        <!-- Header Register -->
+        <div class="flex flex-col sm:justify-center items-center">
+            <h1 class="text-lg font-bold mt-5 mb-5">Register Your Account!</h1>
+        </div>
 
         <!-- Name -->
         <div>

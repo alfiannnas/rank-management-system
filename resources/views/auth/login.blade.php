@@ -4,6 +4,10 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
+        <!-- Header Login -->
+        <div class="flex flex-col sm:justify-center items-center">
+            <h1 class="text-lg font-bold mt-5 mb-5">Login to Your Account!</h1>
+        </div>
 
         <!-- Email Address -->
         <div>
