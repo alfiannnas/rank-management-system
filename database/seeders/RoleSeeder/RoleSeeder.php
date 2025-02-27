@@ -2,7 +2,6 @@
 
 namespace Database\Seeders\RoleSeeder;
 
-use App\Models\User;
 use App\PermissionsManager\Admin\AdminPermissionManager;
 use App\PermissionsManager\User\UserPermissionManager;
 use Spatie\Permission\Models\Permission;
